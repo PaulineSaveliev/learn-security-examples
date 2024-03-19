@@ -1,1 +1,16 @@
-Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+Briefly explain the vulnerability and why the 
+secure version prevents the vulnerability.
+
+The vulnerability lies in the fact that the req.sesion.user value 
+is used to determine the identity of the user. The value is set 
+based on user input in the /register endpoint without any validation
+or verification, so an attacker could input their code to set the 
+session user value to something else (such as "Admin") and 
+getting access to private information through the /sensitive endpoint,
+which they would then have access to.
+
+In secure.js, the vulnerability is addressed with the addition of 
+a secret key. This key is used to sig the session ID cookie, which
+makes it much harder for the attacker to impersonate another user. The 
+code also sets httpOnly and sameSite to true in the session cookie, 
+preventing client-side JS from accessing the cookie.

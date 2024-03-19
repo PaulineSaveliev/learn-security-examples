@@ -1,0 +1,12 @@
+The vulnerability lies in the fact that the response sent to the user
+includes the "name" input by the user, assuming it is a string that comes
+from the client. An attacker could include a code snippet instead of a
+string, which the program would then execute and allow the hacker to 
+retrieve information. 
+
+In secure.js, the user's input is reformatted and sanitized to ensure
+it is a clean and non-executable strong. This prevents any code that 
+came from the user from being executed, and information/access being 
+granted to unauthorized users.
+Tampering violates the "integrity" CIA property, since it is 
+unauthorized modification of data.

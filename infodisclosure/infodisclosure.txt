@@ -1,3 +1,23 @@
-Briefly explain the vulnerability and why the secure version prevents the vulnerability.
+Briefly explain the vulnerability and why the secure version 
+prevents the vulnerability.
 Which CIA property does tampering violate?
 What additional security mechanisms can you incorporate?
+
+
+One vulnerability in the code is that user-provided values are used
+in a mongoose query to query the databse, so a hacker can input their 
+code or a SQL statement to retrieve or modify sensitive data without
+authorization. 
+
+In the secure version, the code checks whether the input is a string,
+throwing an error if the input is not a string. This prevents foreign code
+from being executed. The user input is also sanitized if it is a string
+to prevent any SQL statements and further prevent the 
+possibility of an injection attack.
+
+Tampering violates the "confidentiality" CIA property, since data 
+can be accessed without authorization. "integrity" can also be violated
+if the injecttion attack adds or modifies the existing data isntead of
+accessing it.
+
+Additional security mechanisms that could be incorporated 
