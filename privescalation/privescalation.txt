@@ -1,0 +1,13 @@
+
+The vulnerability in the program lies in the fact that there is no
+authentication. An attacker could pass in an admin's username and pretend
+to be an admin, thus unlocking new privileges that they should not have.
+They could give a new role to other users or downgrade the role of the 
+actual admin. In the secure example, sessions are used to add 
+authentication, which requires a key for sercurity.
+
+prevent it:
+- add two-factor authentication
+    - then anyone requesting the sever will be an authenticated user
+- define endpoints in such a way that only admin can acess those endpoints
+    - strong authentication with sessions or two-factor

@@ -1,2 +1,17 @@
 - Briefly explain the vulnerability and why the secure version prevents the vulnerability.
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+
+The vulnerability lies in the fact that a mongoose query (findOne) is
+called with an id value that potentially comes from attacker-controlled
+input. Since there is no sanitization of input and no error handling,
+invalid attacker input crashes the site if something goes wrong, preventing
+the server from being functional and denying service. The secure server
+ensures that errors are caught using mongoose's built-in findOne id 
+verification.
+
+
+security mechanisms:
+- add error handling, so that the site doesnt crash with invalid input
+    - try/catch on query, or any other part
+- sanitize the input

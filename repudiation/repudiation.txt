@@ -1,2 +1,27 @@
 - Briefly explain the vulnerability and why the secure version is better at preventing repudiation than the insecure version.
 - What additional security mechanisms can you incorporate to prevent such attacks?
+
+
+vulnerability:
+The vulnerability leis in the fact that in the event an attack occurs 
+on the server, there is no way to determine where the attack came from,
+what happened, or who was responsible. In the secure version, there is 
+a middleware function that logs every request in a secure file. It 
+writes the timestamp, method called, request, and ip address of who 
+made the request, making it easy to track down when something went 
+wrong. It also has error handling in the event that the writing to the 
+log encounters an issue. It automatically goes to the next middleware,
+which sends a response to the server and prevents the crash. In this way,
+the more secure server prevents denial of service by preventing a crash 
+while also tracking the causes of a potential crash
+
+
+security to add:
+- maintain log to track information associated with an attack
+    - who caused the server to fail
+    - their ip address
+    - timestamp of an event
+    - what their inputs were 
+    - what they were trying to access 
+
+

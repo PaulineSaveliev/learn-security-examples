@@ -1,3 +1,20 @@
 Briefly explain the vulnerability and why the secure version prevents the vulnerability.
-Which CIA property does tampering violate?
+Which CIA property does information disclosure violate?
 What additional security mechanisms can you incorporate?
+
+The vulnerability is on line 26, where the user-input username is
+used in the program witout being sanitized. This allows the user to 
+input code and retrieve the endpoints of the program, thus making
+them able to enter those endpoints and access restricted information.
+
+
+Information disclosure violates the confidentiality property, since 
+the malicious user would then be able to access data they do not have
+permission to be viewing.
+
+Additional security mechanisms would include sanitizing the user input,
+so that if the user attempts to input code that would cause a breach 
+the input is rejected. You can also add authentication so the user cannot
+access restricted data, along with not logging sensitive information like
+passwords, since the log can be accessed. Encrypting the data would also
+help prevent information disclosure.
